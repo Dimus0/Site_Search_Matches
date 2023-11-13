@@ -2,9 +2,10 @@ from datetime import datetime
 
 from flask import Flask, redirect, url_for,render_template
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.ext.compiler import compiles
 from sqlalchemy.orm import declarative_base,sessionmaker
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, Date, ForeignKey
-from sqlalchemy.orm import sessionmaker,relationship,Mapped
+from sqlalchemy.orm import sessionmaker,relationship
 import os
 
 BASE_DIR=os.path.dirname(os.path.realpath(__file__))
@@ -16,8 +17,9 @@ Base=declarative_base()
 engine=create_engine(connection_string,echo=True)
 
 Session=sessionmaker()
+
 class Player(Base):
-    __tablename__ = 'player'
+    __tablename__ = 'players'
     id = Column(Integer(), primary_key=True)
     firstname = Column(String(50))
     lastname = Column(String(50))
