@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title%} Match Details{% endblock %}
+
+{%block content%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='searchsmatch.css') }}">
+<!-- update_match.html -->
+    <h1>Update Match</h1>
+    <form method="post" action="{{ url_for('my_blueprint.perform_update') }}">
+        <input type="hidden" name="match_id" value="{{ match_id }}">
+        <label for="home_team">Home Team:</label>
+        <input type="text" name="home_team" value="{{ home_team }}" required>
+
+        <label for="away_team">Away Team:</label>
+        <input type="text" name="away_team" value="{{ away_team }}" required>
+
+        <label for="score">Score:</label>
+        <input type="text" name="score" value="{{ score }}" required>
+
+        <label for="stadium">Stadium:</label>
+        <input type="text" name="stadium" value="{{ stadium }}" required>
+
+        <!-- Add more fields as needed -->
+
+        <p><input type="submit" value="Update" class="update-button"></p>
+    </form>
+
+{%endblock%}

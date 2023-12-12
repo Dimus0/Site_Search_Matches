@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Search Match{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='searchsmatch.css') }}">
+
+    <form action="/api/search-matchers" method="post" class="search-form">
+        <div class="center-container">
+            <p>Введіть назви команд, які хочете знайти між якими відбувся матч</p>
+                <label for="home-team">Home Team:</label>
+                <input type="text" id="home-team" name="ht">
+                <label for="away-team">Away Team:</label>
+                <input type="text" id="away-team" name="at">
+                <p><input type="submit" value="Пошук" class="search"></p>
+        </div>
+    </form>
+
+    <nav class="top-menu">
+        <form action="/" method="GET">
+            <button type="submit">Home Page</button>
+        </form>
+
+<!--        <form action="/search-team" method="get">-->
+<!--            <button type="submit">Search Teams</button>-->
+<!--        </form>-->
+    </nav>
+{% endblock %}

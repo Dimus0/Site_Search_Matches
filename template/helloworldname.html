@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world name</title>
+</head>
+<body>
+    {% if name.isdigit() %}
+        <p>Hello World {{ name }}</p>
+            <form action="/" methods="GET">
+                <button type="submit">Go to Home Page</button>
+            </form>
+            <form action="/search_match" methods="GET">
+                <button type="submit">Go to page Login</button>
+            </form>
+    {%else%}
+        <p>Hello World</p>
+            <form action="/" methods="GET">
+                <button type="submit">Go to Home Page</button>
+            </form>
+            <form action="/search_match" methods="GET">
+                <button type="submit">Go to page Search</button>
+            </form>
+    {% endif %}
+</body>
+</html>

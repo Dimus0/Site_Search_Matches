@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Search Team{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='searchsmatch.css') }}">
+
+    <form action="/search-team" method="get" class="search-form">
+        <div class="center-container">
+            <p>Введіть назву команди для пошуку</p>
+            <p>Team:<input type="text" name="team_name"></p>
+            <p><input type="submit" value="Search"></p>
+        </div>
+    </form>
+
+    <nav class="top-menu">
+        <form action="/" method="GET">
+            <button type="submit">Go to Home Page</button>
+        </form>
+        <form action="/search_match" method="GET">
+            <button type="submit">Go to Search Match</button>
+        </form>
+    </nav>
+{% endblock %}
