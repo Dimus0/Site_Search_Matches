@@ -1,4 +1,4 @@
-from db import Team,Session,engine
+from dbs.models import Team,Session,engine
 
 teams=[
     {

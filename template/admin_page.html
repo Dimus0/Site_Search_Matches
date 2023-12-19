@@ -53,17 +53,20 @@
             <label for="update_match_id">Match ID:</label>
             <input type="text" id="update_match_id" name="id" required>
 
-            <label for="update_home_team">Home Team:</label>
+            <label for="update_home_team">Домашня команда:</label>
             <input type="text" id="update_home_team" name="home_team" placeholder="New Home Team">
 
-            <label for="update_away_team">Away Team:</label>
+            <label for="update_away_team">Гостьова команда:</label>
             <input type="text" id="update_away_team" name="away_team" placeholder="New Away Team">
 
-            <label for="update_score">Рахунок:</label>
-            <input type="text" id="update_score" name="score" placeholder="New Score">
+            <label for="add_Hscore">Рахунок для Домашньої команди:</label>
+            <input type="text" id="add_Hscore" name="hscore" placeholder="Рахунок" required>
 
-            <label for="update_stadium">Стадіон:</label>
-            <input type="text" id="update_stadium" name="stadium" placeholder="New Stadium">
+            <label for="add_Ascore">Рахунок для Гостьової команди:</label>
+            <input type="text" id="add_Ascore" name="ascore" placeholder="Рахунок" required>
+
+            <label for="add_referee">Суддя:</label>
+            <input type="text" id="add_referee" name="referee" placeholder="Referee" required>
 
             <p><input type="submit" value="Зберегти" class="search"></p>
             <button id="toggle-update-section">Show Update Section</button>
@@ -77,21 +80,29 @@
         <label for="add_id">ID:</label>
         <input type="text" id="add_id" name="id" placeholder="ID" required>
 
-        <label for="add_home_team">Home Team:</label>
-        <input type="text" id="add_home_team" name="home_team" placeholder="Home Team" required>
+        <label for="add_date">Дата матчу:</label>
+        <input type="datetime-local" id="add_date" name="date" required pattern="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}"
+               title="Enter date and time in the format YYYY-MM-DDTHH:mm">
 
-        <label for="add_away_team">Away Team:</label>
-        <input type="text" id="add_away_team" name="away_team" placeholder="Away Team" required>
+        <label for="add_home_team">Домашня команда:</label>
+        <input type="text" id="add_home_team" name="home_team" placeholder="Домашня" required>
 
-        <label for="add_score">Рахунок:</label>
-        <input type="text" id="add_score" name="score" placeholder="Score" required>
+        <label for="add_away_team">Гостьова команда:</label>
+        <input type="text" id="add_away_team" name="away_team" placeholder="Гість" required>
 
-        <label for="add_stadium">Стадіон:</label>
-        <input type="text" id="add_stadium" name="stadium" placeholder="Stadium" required>
+        <label for="add_Hscore">Рахунок для Домашньої команди:</label>
+        <input type="text" id="add_Hscore" name="hscore" placeholder="Рахунок" required>
+
+        <label for="add_Ascore">Рахунок для Гостьової команди:</label>
+        <input type="text" id="add_Ascore" name="ascore" placeholder="Рахунок" required>
+
+        <label for="add_referee">Суддя:</label>
+        <input type="text" id="add_referee" name="referee" placeholder="Referee" required>
 
         <p><input type="submit" value="Додати матч" class="add-button"></p>
     </form>
 </div>
+
 
 
     <script>

@@ -5,11 +5,12 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='searchsmatch.css') }}">
 <form action="#" method="POST">
     <h1>Інформація про матч</h1>
-    <p>Match ID: {{ match.id }} </p>
-    <p>Home Team: {{ match.home_team }} </p>
-    <p>Away Team: {{ match.away_team }}</p>
-    <p>Рахунок: {{ match.score }}</p>
-    <p>Стадіон: {{ match.stadium }}</p>
+    <p>Match ID: {{ id }} </p>
+    <p>Дата матчу: {{match.date}}</p>
+    <p>Home Team: {{ match.home_team_id }} </p>
+    <p>Away Team: {{ match.away_team_id }}</p>
+    <p>Рахунок: {{ match. goal_score_home_team }}:{{ match. goal_score_away_team }}</p>
+    <p>Суддя: {{ match.referee }}</p>
 </form>
 
     <form action="/" methods="GET">

@@ -1,4 +1,4 @@
-from db import Player,Session,engine
+from dbs.models import Session,engine
 
 players=[
     {
