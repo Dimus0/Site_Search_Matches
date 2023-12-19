@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title%} Match Details{% endblock %}
+
+{%block content%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='searchsmatch.css') }}">
+<form action="#" method="POST">
+    <h1>Інформація про матч</h1>
+    <p>Дата матчу: {{match.date}}</p>
+    <p>Home Team: {{ ht }} </p>
+    <p>Away Team: {{ at }}</p>
+    <p>Рахунок: {{ match. goal_score_home_team }}:{{ match. goal_score_away_team }}</p>
+    <p>Суддя: {{ match.referee }}</p>
+</form>
+
+    <form action="/" methods="GET">
+        <button type="submit">Go to Home page</button>
+    </form>
+    <form action="/api/search_match" methods="GET">
+        <button type="submit">Go to Search Match</button>
+    </form>
+{%endblock%}

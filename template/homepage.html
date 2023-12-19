@@ -1,0 +1,89 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='homepage.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        /* Add some styles for the popup window */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            z-index: 1;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        #adminBtn {
+            position: fixed;
+            top: 10px; /* Adjust as needed */
+            right: 10px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <h1 class="container">Home Page</h1>
+    <form action="/search_match" methods="GET">
+        <button type="submit">Search Match</button>
+    </form>
+<!--    <form action="/search-team" method="get">-->
+<!--        <button type="submit">Search Teams</button>-->
+<!--    </form>-->
+
+    <button id="adminBtn">Admin</button>
+    <div class="popup" id="adminPopup">
+        <form id="adminForm">
+            <label for="password">Enter Admin Password:</label>
+            <input type="password" id="password" name="password">
+            <button type="button" onclick="checkPassword()">Submit</button>
+        </form>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <script>
+        const adminBtn = document.getElementById('adminBtn');
+        const adminPopup = document.getElementById('adminPopup');
+        const overlay = document.getElementById('overlay');
+
+        adminBtn.addEventListener('click', () => {
+            adminPopup.style.display = 'block';
+            overlay.style.display = 'block';
+        });
+
+        function checkPassword() {
+            const passwordInput = document.getElementById('password');
+            const password = passwordInput.value;
+
+            const adminPassword = '0000';
+
+            if (password === adminPassword) {
+                window.location.href = '/admin';
+            } else {
+                alert('Incorrect password. Please try again.');
+                passwordInput.value = '';
+            }
+
+            adminPopup.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

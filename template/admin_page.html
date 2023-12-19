@@ -1,0 +1,124 @@
+<!-- adminpanel.html -->
+
+{% extends "base.html" %}
+
+{% block title %}Admin Panel{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='adminpage.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='adminpanel.css') }}">
+
+    <nav class="top-menu">
+        <form action="/" method="GET">
+            <button type="submit">Go to Home Page</button>
+        </form>
+        <div class="dropdown" id="dropdown-menu">
+            <button class="dropbtn">Select Category</button>
+            <div class="dropdown-content">
+                <a href="#" onclick="showCategory('delete')">Delete Match</a>
+                <a href="#" onclick="showCategory('update')">Update Match</a>
+                <a href="#" onclick="showCategory('add')">Add Match</a>
+                <a href="#" onclick="showCategory('get-info')">Get Match Information</a>
+            </div>
+        </div>
+        <form action="/search_match" method="GET">
+            <button type="submit">Go to Search Match</button>
+        </form>
+    </nav>
+
+    <div id="delete-section" class="admin-section" style="display: block;"> <!-- Default style -->
+        <h1>Delete Match</h1>
+        <form method="post" action="{{ url_for('my_blueprint.delete_matches') }}">
+            <label for="match_id">Match ID:</label>
+            <input type="text" name="match_id" id="match_id" required>
+            <p><input type="submit" value="Delete" class="delete-button"></p>
+        </form>
+        {% if delete_message %}
+            <p>{{ delete_message }}</p>
+        {% endif %}
+    </div>
+
+    <div id="get-info-section" class="admin-section" style="display: none;"> <!-- Default style -->
+        <form method="post" action="{{ url_for('my_blueprint.get_info') }}">
+        <p>Ввести ID матчу, для отримання інформації</p>
+        <label for="match_id">Match ID:</label>
+        <input type="text" id="match_id" name="id">
+        <p><input type="submit" value="Пошук" class="search"></p>
+        </form>
+    </div>
+
+     <div id="update-section" class="admin-section" style="display: none;">
+        <form method="post" action="{{ url_for('my_blueprint.update_match') }}">
+            <p>Ввести ID матчу, для отримання оновлення</p>
+            <label for="update_match_id">Match ID:</label>
+            <input type="text" id="update_match_id" name="id" required>
+
+            <label for="update_home_team">Домашня команда:</label>
+            <input type="text" id="update_home_team" name="home_team" placeholder="New Home Team">
+
+            <label for="update_away_team">Гостьова команда:</label>
+            <input type="text" id="update_away_team" name="away_team" placeholder="New Away Team">
+
+            <label for="add_Hscore">Рахунок для Домашньої команди:</label>
+            <input type="text" id="add_Hscore" name="hscore" placeholder="Рахунок" required>
+
+            <label for="add_Ascore">Рахунок для Гостьової команди:</label>
+            <input type="text" id="add_Ascore" name="ascore" placeholder="Рахунок" required>
+
+            <label for="add_referee">Суддя:</label>
+            <input type="text" id="add_referee" name="referee" placeholder="Referee" required>
+
+            <p><input type="submit" value="Зберегти" class="search"></p>
+            <button id="toggle-update-section">Show Update Section</button>
+        </form>
+    </div>
+
+   <div id="add-section" class="admin-section" style="display: block;">
+    <form method="post" action="{{ url_for('my_blueprint.add_match') }}">
+        <p>Додати новий матч</p>
+
+        <label for="add_id">ID:</label>
+        <input type="text" id="add_id" name="id" placeholder="ID" required>
+
+        <label for="add_date">Дата матчу:</label>
+        <input type="datetime-local" id="add_date" name="date" required pattern="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}"
+               title="Enter date and time in the format YYYY-MM-DDTHH:mm">
+
+        <label for="add_home_team">Домашня команда:</label>
+        <input type="text" id="add_home_team" name="home_team" placeholder="Домашня" required>
+
+        <label for="add_away_team">Гостьова команда:</label>
+        <input type="text" id="add_away_team" name="away_team" placeholder="Гість" required>
+
+        <label for="add_Hscore">Рахунок для Домашньої команди:</label>
+        <input type="text" id="add_Hscore" name="hscore" placeholder="Рахунок" required>
+
+        <label for="add_Ascore">Рахунок для Гостьової команди:</label>
+        <input type="text" id="add_Ascore" name="ascore" placeholder="Рахунок" required>
+
+        <label for="add_referee">Суддя:</label>
+        <input type="text" id="add_referee" name="referee" placeholder="Referee" required>
+
+        <p><input type="submit" value="Додати матч" class="add-button"></p>
+    </form>
+</div>
+
+
+
+    <script>
+        document.getElementById('toggle-update-section').addEventListener('click', function() {
+            var updateSection = document.getElementById('update-section');
+            updateSection.style.display = (updateSection.style.display === 'none' || updateSection.style.display === '') ? 'block' : 'none';
+        });
+    </script>
+
+    <script>
+        function showCategory(category) {
+            document.querySelectorAll('.admin-section').forEach(function (section) {
+                section.style.display = 'none';
+            });
+            document.getElementById(`${category}-section`).style.display = 'block';
+            document.getElementById('dropdown-menu').getElementsByTagName('button')[0].innerText = 'Select Category';
+        }
+    </script>
+{% endblock %}

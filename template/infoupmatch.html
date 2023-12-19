@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Match Details{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='searchsmatch.css') }}">
+<form action="{{ url_for('update_match_info', match_id=match.id) }}" method="POST">
+    <h1>Інформація про матч</h1>
+    <p>Match ID: {{ match.id }} </p>
+    <label for="home_team">Home Team:</label>
+    <input type="text" id="home_team" name="home_team" value="{{ match.home_team }}" required>
+
+    <label for="away_team">Away Team:</label>
+    <input type="text" id="away_team" name="away_team" value="{{ match.away_team }}" required>
+
+    <label for="score">Рахунок:</label>
+    <input type="text" id="score" name="score" value="{{ match.score }}" required>
+
+    <label for="stadium">Стадіон:</label>
+    <input type="text" id="stadium" name="stadium" value="{{ match.stadium }}" required>
+
+    <button type="submit">Update Match</button>
+</form>
+
+<form action="/" method="GET">
+    <button type="submit">Go to Home page</button>
+</form>
+
+<form action="/api/search_match" method="GET">
+    <button type="submit">Go to Search Match</button>
+</form>
+{% endblock %}
